@@ -2,6 +2,9 @@
 
 /** @var yii\web\View $this */
 
+/* Yii2 pagination widget */
+use yii\widgets\LinkPager;
+
 $this->title = 'Test 1 — ooptimo';
 ?>
 <div class="site-test1">
@@ -25,9 +28,46 @@ $this->title = 'Test 1 — ooptimo';
 
 	<hr>
 	
-	<div class="posts-list">
+	<div class="posts-list mb-5">
 		<div class="row mt-4">
-			<h2>Posts</h2>
+			<h2 class="mb-4">Posts</h2>
+		</div>
+		
+		<div class="row">
+			<!-- Check if there was an error fetching posts -->
+			<?php if ( isset($posts['error']) ): ?>
+				<div class="col-md-12">
+					<div class="alert alert-danger" role="alert">
+						<!-- Display the error message -->
+						<?php echo $posts['message']; ?>
+					</div>
+				</div>
+			<?php else: ?>
+				<!-- Loop and display each post -->
+				<?php foreach ( $posts as $post ): ?>
+					<div class="col-md-4 mb-4">
+						<div class="card h-100">
+							<div class="card-body">
+								<!-- Escape output to prevent HTML injection -->
+								<h5 class="card-title"><?= htmlspecialchars($post['title']) ?></h5>
+								<p class="card-text"><?= htmlspecialchars($post['body']) ?></p>
+							</div>	
+							<div class="card-footer text-ooptimo">
+								<small>By <strong>User <?= htmlspecialchars($post['userId']) ?></strong> · Post <strong>#<?= htmlspecialchars($post['id']) ?></strong></small>
+							</div>
+						</div>
+					</div>
+				<?php endforeach; ?>	
+			<?php endif; ?>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 align-center">
+				<div class="pagination-wrapper align-center mt-4">
+					<!-- Yii2 pagination widget, with Bootstrap 5 structure -->
+					<?= \yii\bootstrap5\LinkPager::widget(['pagination' => $pagination]) ?>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

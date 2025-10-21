@@ -28,3 +28,46 @@ main > .container {
     margin-top: 5px;
     color: #999;
 }
+
+
+/* Custom CSS Variables and Styles for OOPTIMO by Carlos Turmo */
+:root{
+    --primaryColor: #223061;
+    --secondaryColor: #9eade6;
+    --greenColor: #88d3ba;
+}
+
+.text-ooptimo{
+    color: var(--primaryColor)!important;
+}
+
+.bg-dark{
+    background-color: var(--primaryColor)!important;
+}
+
+.navbar-dark{
+    --bs-navbar-brand-color: var(--primaryColor);
+    background-color: var(--secondaryColor)!important;
+}
+
+
+.pagination{
+    --bs-pagination-color: var(--primaryColor);
+
+    --bs-pagination-active-color: var(--primaryColor);
+    --bs-pagination-active-bg: var(--greenColor);
+    --bs-pagination-active-border-color: var(--greenColor);
+
+    --bs-pagination-hover-color: var(--primaryColor);
+    --bs-pagination-hover-bg: var(--secondaryColor);
+    --bs-pagination-hover-border-color: var(--secondaryColor);
+
+    --bs-pagination-focus-color: var(--primaryColor);
+    --bs-pagination-focus-bg: var(--secondaryColor);
+}
+
+#footer{
+    .text-muted{
+        color: var(--bs-white)!important;
+    }
+}
